@@ -1,0 +1,36 @@
+/* Estilos por etiqueta */
+p {
+  color: blue;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  background-color: #e0e0e0;
+  text-align: center;
+}
+
+/* Estilos por clase */
+.contenedor {
+  background-color: #d0f0ff;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid #000;
+}
+
+
+#principal {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+a:hover {
+  color: red;
+}
+
+img {
+  width: 300px;
+  border-radius: 10px;
+}
