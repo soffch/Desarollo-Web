@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <h1>Formulario - Bienvenido usuario</h1>
+      <form id="contactForm">
+        <input type="text" name="nombre" placeholder="Nombre" required />
+        <input type="email" name="email" placeholder="Correo electrónico" required />
+        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <div class="illustration-section">
+      <img src="/img1.jpg" alt="Ilustración" />
+    </div>
+  </div>
+
+  <script>
+  document.getElementById("contactForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const data = {
+      nombre: e.target.nombre.value.trim(),
+      email: e.target.email.value.trim(),
+      mensaje: e.target.mensaje.value.trim()
+    };
+
+    try {
+      const respuesta = await fetch("https://11cippyio9.execute-api.us-east-2.amazonaws.com/prod/formularioContacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      if (respuesta.ok) {
+        alert("Mensaje enviado con éxito");
+        e.target.reset();
+      } else {
+        alert("Ocurrió un error al enviar el formulario");
+      }
+    } catch (error) {
+      alert("Error de red o servidor");
+      console.error(error);
+    }
+  });
+</script>
+
+</body>
+</html>
